@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>هديّة العيد لسلمى 🌙</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --rose:#c9184a; --rose2:#ff4d6d; --rose3:#ff8fab;
+  --pink:#ffd6e0; --gold:#ffe082; --gold2:#ffb300;
+  --cream:#fff9f0; --deep:#00000c;
+  --t1:cubic-bezier(.19,1,.22,1);
+  --t2:cubic-bezier(.175,.885,.32,1.275);
+}
+
+html,body { width:100%;height:100%;overflow:hidden;background:var(--deep);
+  font-family:'Noto Naskh Arabic','Amiri',serif;color:#fff;cursor:none;
+  -webkit-font-smoothing:antialiased; }
+
+#bg { position:fixed;inset:0;width:100%;height:100%;z-index:0; }
+
+#cur { position:fixed;width:15px;height:15px;border-radius:50%;
+  pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 40% 40%,#fff,var(--rose3));
+  box-shadow:0 0 12px var(--rose3),0 0 28px #ff8fab44;
+  transition:transform .12s var(--t1); }
+#cur.clicking { transform:translate(-50%,-50%) scale(.55); }
+
+/* ── STEPS ─────────────────────────────────────── */
+.step { position:fixed;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;z-index:10;
+  padding:30px 24px;text-align:center;
+  opacity:0;pointer-events:none;will-change:opacity,transform; }
+.step.active { opacity:1;pointer-events:all; }
+
+/* ── PROGRESS ─────────────────────────────────── */
+#pbar-wrap { position:fixed;bottom:0;left:0;right:0;height:3px;
+  background:rgba(255,255,255,.06);z-index:60; }
+#pbar { height:100%;background:linear-gradient(90deg,var(--rose),var(--rose3),var(--gold));
+  width:0%;transition:width 1s var(--t1);box-shadow:0 0 8px var(--rose3); }
+#steps-label { position:fixed;bottom:14px;left:50%;transform:translateX(-50%);
+  font-size:12px;color:rgba(255,255,255,.35);letter-spacing:3px;z-index:61;transition:opacity .5s; }
+#dots { position:fixed;bottom:28px;left:50%;transform:translateX(-50%);
+  display:flex;gap:8px;z-index:60;transition:opacity .6s; }
+.dot { width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .5s var(--t2); }
+.dot.done { background:#ff8fab44;transform:scale(.9); }
+.dot.now  { background:var(--rose3);transform:scale(1.6);box-shadow:0 0 10px var(--rose3); }
+
+/* ── MOON ─────────────────────────────────────── */
+.moon-orb { width:clamp(110px,22vw,180px);height:clamp(110px,22vw,180px);border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,#fff9e0,var(--gold),#e65c00);
+  box-shadow:0 0 40px #ffe08288,0 0 100px #ffe08244;
+  animation:moonBreath 4s ease-in-out infinite; }
+@keyframes moonBreath {
+  0%,100%{ box-shadow:0 0 40px #ffe08288,0 0 100px #ffe08244;transform:scale(1); }
+  50%    { box-shadow:0 0 70px #ffe082cc,0 0 150px #ffe08277;transform:scale(1.04); } }
+.moon-craters { position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 65% 30%,rgba(0,0,0,.1) 8%,transparent 9%),
+             radial-gradient(circle at 30% 60%,rgba(0,0,0,.08) 5%,transparent 6%); }
+
+/* ── HEART ────────────────────────────────────── */
+.heart-3d { width:clamp(120px,22vw,200px);height:clamp(120px,22vw,200px);
+  position:relative;margin:0 auto;
+  animation:heartbeat 1.2s ease-in-out infinite;
+  filter:drop-shadow(0 0 30px var(--rose)cc) drop-shadow(0 0 60px var(--rose)66); }
+.heart-3d::before,.heart-3d::after {
+  content:'';position:absolute;
+  background:linear-gradient(145deg,var(--rose2),var(--rose),#80011f);
+  border-radius:50% 50% 0 0; }
+.heart-3d::before { width:55%;height:55%;top:20%;left:50%;
+  transform:rotate(-45deg);transform-origin:0 100%; }
+.heart-3d::after  { width:55%;height:55%;top:20%;right:50%;
+  transform:rotate(45deg);transform-origin:100% 100%; }
+.heart-core { position:absolute;inset:0;
+  background:linear-gradient(145deg,var(--rose2),var(--rose),#80011f);
+  clip-path:polygon(50% 90%,0 35%,15% 5%,50% 22%,85% 5%,100% 35%); }
+@keyframes heartbeat {
+  0%,100%{transform:scale(1);}14%{transform:scale(1.15);}
+  28%{transform:scale(1);}42%{transform:scale(1.1);}70%{transform:scale(1);} }
+
+/* ── POEM CARD ─────────────────────────────────── */
+.poem-card { max-width:620px;width:95%;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,141,171,.15);border-radius:24px;
+  padding:clamp(28px,5vw,50px) clamp(24px,4vw,44px);
+  backdrop-filter:blur(16px);
+  box-shadow:0 0 60px #c9184a11,0 24px 60px rgba(0,0,0,.4);
+  opacity:0;position:relative;overflow:hidden; }
+.poem-card::before { content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,#c9184a08,transparent 70%); }
+.poem-line { font-family:'Amiri',serif;font-size:clamp(17px,2.8vw,26px);
+  line-height:2.3;color:rgba(255,214,224,.9);display:block;opacity:0; }
+.poem-line.hl { color:var(--gold);text-shadow:0 0 20px #ffe08266;
+  font-weight:700;font-size:clamp(18px,3vw,28px); }
+.poem-line.dua { color:#c8f5d4;text-shadow:0 0 15px #4ade8044;font-style:italic; }
+
+/* ── VOW ITEMS ─────────────────────────────────── */
+.vow-list { display:flex;flex-direction:column;gap:14px;max-width:580px;width:95%; }
+.vow-item { display:flex;align-items:flex-start;gap:14px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,141,171,.12);
+  border-radius:16px;padding:16px 20px;backdrop-filter:blur(10px);
+  opacity:0;transform:translateX(40px);transition:all .7s var(--t1);text-align:right; }
+.vow-icon { font-size:clamp(22px,4vw,30px);flex-shrink:0;margin-top:2px; }
+.vow-text { font-family:'Amiri',serif;font-size:clamp(16px,2.3vw,22px);
+  color:var(--pink);line-height:1.9; }
+.vow-dua  { font-family:'Amiri',serif;font-size:clamp(15px,2.1vw,20px);
+  color:#c8f5d4;font-style:italic;line-height:1.9; }
+.vow-item.visible { opacity:1;transform:translateX(0); }
+
+/* ── GIFT BOX ──────────────────────────────────── */
+#s12 { perspective:1400px; }
+.s12-invite { font-family:'Amiri',serif;font-size:clamp(20px,3.8vw,36px);
+  color:var(--pink);animation:invitePulse 2s ease-in-out infinite;
+  opacity:0;margin-bottom:32px;z-index:5;position:relative; }
+@keyframes invitePulse {
+  0%,100%{color:var(--pink);text-shadow:none;}
+  50%    {color:var(--rose3);text-shadow:0 0 25px #ff8fab88;} }
+
+.gift-scene { position:relative;width:240px;height:270px;margin:0 auto;
+  cursor:pointer;opacity:0;transform-style:preserve-3d;z-index:5;transition:transform .2s; }
+.gift-scene:hover { transform:translateY(-6px) rotateY(5deg); }
+.gift-aura { position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);
+  width:300px;height:60px;background:radial-gradient(ellipse,#c9184a66,transparent 70%);
+  filter:blur(20px);animation:auraPulse 2s ease-in-out infinite; }
+@keyframes auraPulse {
+  0%,100%{opacity:.5;transform:translateX(-50%) scaleX(1);}
+  50%    {opacity:1;transform:translateX(-50%) scaleX(1.15);} }
+.gs { position:absolute;border-radius:50%;
+  background:radial-gradient(circle,var(--gold),transparent);
+  animation:gsp var(--gd,2s) ease-in-out var(--gdl,0s) infinite;pointer-events:none; }
+@keyframes gsp { 0%,100%{opacity:0;transform:scale(0);}50%{opacity:1;transform:scale(1);} }
+.gift-lid-wrap { position:absolute;top:0;left:-14px;width:268px;height:66px;
+  transform-origin:bottom center;transform-style:preserve-3d;
+  transition:transform 1.6s cubic-bezier(.175,.885,.32,1.275);z-index:10; }
+.gift-lid { width:100%;height:66px;
+  background:linear-gradient(160deg,#ff758c,var(--rose2),var(--rose));
+  border-radius:12px 12px 4px 4px;
+  box-shadow:0 -6px 24px #c9184a77,inset 0 1px 0 rgba(255,255,255,.25);
+  position:relative;overflow:hidden; }
+.gift-lid::before { content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(255,255,255,.2) 0%,transparent 50%); }
+.lid-rh { position:absolute;top:50%;left:0;width:100%;height:18px;
+  background:linear-gradient(90deg,var(--gold2),var(--gold),#fff9c4,var(--gold),var(--gold2));
+  transform:translateY(-50%);box-shadow:0 0 15px var(--gold)77; }
+.lid-rv { position:absolute;top:0;left:50%;width:18px;height:100%;
+  background:linear-gradient(180deg,var(--gold2),var(--gold),#fff9c4,var(--gold),var(--gold2));
+  transform:translateX(-50%);box-shadow:0 0 15px var(--gold)77; }
+.gift-bow { position:absolute;top:-42px;left:50%;transform:translateX(-50%);
+  font-size:54px;z-index:11;filter:drop-shadow(0 4px 16px var(--gold)99);
+  animation:bowWiggle 2s ease-in-out infinite; }
+@keyframes bowWiggle {
+  0%,100%{transform:translateX(-50%) scale(1) rotate(-3deg);}
+  50%    {transform:translateX(-50%) scale(1.1) rotate(3deg);} }
+.gift-body { position:absolute;bottom:0;left:0;width:240px;height:204px;transition:transform .3s; }
+.gift-front { width:100%;height:100%;
+  background:linear-gradient(170deg,#e63165,var(--rose),#80011f);
+  border-radius:4px 4px 14px 14px;
+  box-shadow:0 16px 50px #c9184a99,0 0 100px #c9184a33,
+             inset 6px 0 0 rgba(255,255,255,.05),inset 0 2px 0 rgba(255,255,255,.15);
+  position:relative;overflow:hidden; }
+.gift-front::before { content:'';position:absolute;inset:0;
+  background:linear-gradient(130deg,rgba(255,255,255,.14) 0%,transparent 45%); }
+.box-rh { position:absolute;top:50%;left:0;width:100%;height:20px;
+  background:linear-gradient(90deg,var(--gold2),var(--gold),#fff9c4,var(--gold),var(--gold2));
+  transform:translateY(-50%);box-shadow:0 0 25px var(--gold)88; }
+.box-rv { position:absolute;top:0;left:50%;width:20px;height:100%;
+  background:linear-gradient(180deg,var(--gold2),var(--gold),#fff9c4,var(--gold),var(--gold2));
+  transform:translateX(-50%);box-shadow:0 0 25px var(--gold)88; }
+.gift-scene.opening .gift-lid-wrap { transform:rotateX(-155deg) translateY(-14px); }
+
+/* ── COUNTDOWN RING ────────────────────────────── */
+.countdown-ring { width:clamp(160px,30vw,240px);height:clamp(160px,30vw,240px);
+  position:relative;margin:0 auto 28px; }
+.ring-svg { width:100%;height:100%;transform:rotate(-90deg); }
+.ring-bg { fill:none;stroke:rgba(255,141,171,.1);stroke-width:4; }
+.ring-progress { fill:none;stroke:url(#ringGrad);stroke-width:4;stroke-linecap:round;
+  stroke-dasharray:565;stroke-dashoffset:565;transition:stroke-dashoffset 4s linear; }
+.ring-inner { position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center; }
+.ring-emoji { font-size:clamp(40px,8vw,70px); }
+.ring-text  { font-family:'Amiri',serif;font-size:clamp(14px,2vw,20px);
+  color:rgba(255,214,224,.8);margin-top:4px; }
+
+/* ── FINAL ─────────────────────────────────────── */
+#final { position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:24px;
+  pointer-events:none;opacity:0;
+  background:radial-gradient(ellipse at center,#1a0022 0%,#000010 70%);
+  transition:opacity 1.4s ease; }
+#final.show { opacity:1;pointer-events:all; }
+
+.final-name { font-family:'Amiri',serif;font-weight:700;
+  font-size:clamp(90px,22vw,220px);
+  background:linear-gradient(140deg,#fffafa 0%,var(--pink) 25%,var(--rose3) 55%,var(--rose) 85%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 50px #ff8fabcc) drop-shadow(0 0 100px #c9184a77);
+  opacity:0;line-height:1;
+  animation:megaReveal 1.4s var(--t2) .4s forwards; }
+@keyframes megaReveal {
+  0%  {transform:scale(.02) rotate(-20deg);opacity:0;}
+  50% {opacity:1;}
+  70% {transform:scale(1.14) rotate(2deg);}
+  85% {transform:scale(.97) rotate(-.5deg);}
+  100%{transform:scale(1) rotate(0);opacity:1;} }
+
+.final-eid { font-family:'Amiri',serif;font-size:clamp(22px,4.5vw,46px);
+  color:var(--gold);text-shadow:0 0 25px var(--gold)99;
+  opacity:0;animation:fadeUp 1s var(--t1) 1.7s forwards;margin-top:8px; }
+.final-dua { font-family:'Amiri',serif;font-size:clamp(16px,2.8vw,26px);
+  color:#c8f5d4;font-style:italic;line-height:2;
+  opacity:0;animation:fadeUp 1s var(--t1) 2.3s forwards;margin-top:10px;
+  text-shadow:0 0 15px #4ade8033; }
+.final-msg { font-size:clamp(15px,2.3vw,24px);color:rgba(255,214,224,.7);
+  opacity:0;animation:fadeUp 1s var(--t1) 3s forwards;margin-top:8px;line-height:1.9; }
+.final-roses { font-size:clamp(22px,4vw,40px);letter-spacing:10px;
+  opacity:0;animation:fadeUp 1s var(--t1) 3.6s forwards;margin-top:16px; }
+
+/* ── PARTICLES ─────────────────────────────────── */
+.rp { position:fixed;pointer-events:none;z-index:210;
+  animation:rpExplode linear forwards;font-size:var(--rps,24px); }
+@keyframes rpExplode {
+  0%  {transform:translate(-50%,-50%) scale(.2) rotate(0);opacity:1;}
+  35% {transform:translate(calc(-50% + var(--mx)),calc(-50% + var(--my))) scale(1.4) rotate(180deg);opacity:1;}
+  100%{transform:translate(calc(-50% + var(--fx)),calc(-50% + var(--fy))) scale(.1) rotate(720deg);opacity:0;} }
+.falling-petal { position:fixed;pointer-events:none;z-index:8;
+  animation:petalDrift linear infinite;opacity:0;will-change:transform,opacity; }
+@keyframes petalDrift {
+  0%  {transform:translateY(-40px) rotate(0) scale(.8);opacity:0;}
+  8%  {opacity:.9;}90%{opacity:.4;}
+  100%{transform:translateY(110vh) rotate(var(--pr,540deg)) translateX(var(--px,30px));opacity:0;} }
+.float-h { position:fixed;pointer-events:none;z-index:8;
+  animation:floatUp linear infinite;opacity:0; }
+@keyframes floatUp {
+  0%  {transform:translateY(0) rotate(0);opacity:0;}
+  10% {opacity:.9;}80%{opacity:.4;}
+  100%{transform:translateY(-110vh) rotate(540deg);opacity:0;} }
+
+#flash { position:fixed;inset:0;z-index:190;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(255,141,171,.4),transparent 60%);
+  opacity:0;transition:opacity .08s; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
+
+.nbtn { margin-top:28px;background:rgba(255,255,255,.04);
+  border:1.5px solid rgba(255,141,171,.25);color:var(--pink);
+  padding:14px 48px;font-family:'Amiri',serif;
+  font-size:clamp(18px,2.8vw,26px);border-radius:50px;cursor:pointer;
+  backdrop-filter:blur(12px);transition:all .35s var(--t1);letter-spacing:.06em;
+  box-shadow:0 4px 20px rgba(0,0,0,.3);opacity:0; }
+.nbtn:hover { background:rgba(255,141,171,.12);border-color:var(--rose3);
+  box-shadow:0 0 24px #ff8fab33,0 4px 20px rgba(0,0,0,.3);transform:translateY(-2px); }
+
+/* text utils */
+.ttitle { font-family:'Amiri',serif;font-size:clamp(28px,6vw,60px);
+  background:linear-gradient(135deg,var(--cream),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 18px var(--gold)88);opacity:0; }
+.tsub   { font-family:'Amiri',serif;font-size:clamp(16px,2.5vw,26px);
+  color:rgba(255,214,224,.8);line-height:2;max-width:540px;opacity:0; }
+.tdua   { font-family:'Amiri',serif;font-style:italic;
+  font-size:clamp(16px,2.5vw,26px);color:#c8f5d4;line-height:2.1;
+  max-width:560px;opacity:0;text-shadow:0 0 12px #4ade8033; }
+
+/* approach */
+.approach-scene { opacity:0;animation:approachZoom 3s var(--t1) .5s forwards; }
+@keyframes approachZoom {
+  0%  {opacity:0;transform:scale(.04) translateZ(-3000px);filter:blur(10px);}
+  40% {opacity:1;filter:blur(0);}
+  100%{opacity:1;transform:scale(1) translateZ(0);filter:blur(0);} }
+
+/* star twinkle */
+.s1-star { font-size:18px;opacity:0;position:absolute;
+  animation:starTwinkle var(--sd,3s) ease-in-out var(--dl,0s) infinite; }
+@keyframes starTwinkle {
+  0%,100%{opacity:0;transform:scale(.5);}50%{opacity:1;transform:scale(1.2);} }
+
+/* s4 canvas */
+#s4-canvas { position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none; }
+.s4-poem { position:relative;z-index:5;
+  margin-top:clamp(220px,35vw,320px);
+  font-family:'Amiri',serif;font-style:italic;
+  font-size:clamp(17px,2.8vw,26px);color:rgba(255,141,171,.9);
+  line-height:2;opacity:0;text-shadow:0 0 15px #ff8fab44; }
+#s9-canvas { position:absolute;inset:0;z-index:1;pointer-events:none; }
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<canvas id="bg"></canvas>
+<div id="pbar-wrap"><div id="pbar"></div></div>
+<div id="steps-label">١ / ١٢</div>
+<div id="dots"></div>
+<div id="flash"></div>
+
+<!-- ══ S1 — الافتتاح ══ -->
+<div class="step active" id="s1">
+  <span class="s1-star" style="top:11%;left:7%;--sd:2.1s;--dl:.2s;">✦</span>
+  <span class="s1-star" style="top:8%;right:11%;--sd:3s;--dl:.8s;">✧</span>
+  <span class="s1-star" style="bottom:17%;left:14%;--sd:2.6s;--dl:1.2s;">✦</span>
+  <span class="s1-star" style="bottom:11%;right:8%;--sd:1.9s;--dl:.4s;">✧</span>
+  <span class="s1-star" style="top:33%;left:3%;--sd:2.4s;--dl:.6s;">⋆</span>
+  <span class="s1-star" style="top:55%;right:4%;--sd:3.2s;--dl:1s;">⋆</span>
+
+  <div class="tsub" id="s1l1" style="font-size:clamp(14px,2vw,20px);color:rgba(255,214,224,.55);letter-spacing:.15em;margin-bottom:6px;">
+    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+  </div>
+  <div style="font-family:'Amiri',serif;font-size:clamp(28px,5.5vw,52px);color:var(--pink);
+    text-shadow:0 0 30px #ff8fab66;opacity:0;" id="s1main">
+    إلى سلمى... هديّة من القلب 🌙
+  </div>
+  <div class="tsub" id="s1sub" style="margin-top:12px;font-size:clamp(14px,2.2vw,22px);color:rgba(255,214,224,.6);">
+    أسأل الله أن يجعل هذا العيد بداية كلّ خير لكِ
+  </div>
+  <button class="nbtn" id="s1btn" onclick="startJourney()">ابدئي الرحلة ✨</button>
+</div>
+
+<!-- ══ S2 — القمر ══ -->
+<div class="step" id="s2">
+  <div style="position:relative;margin-bottom:26px;">
+    <div class="moon-orb" id="moonOrb"><div class="moon-craters"></div></div>
+  </div>
+  <div class="ttitle" id="s2t">﴿وَجَعَلَ الْقَمَرَ فِيهِنَّ نُورًا﴾</div>
+  <div class="tsub" id="s2v" style="margin-top:16px;">
+    كما جعل الله القمرَ نوراً في الليل<br>
+    جعلكِ اللهُ نوراً يُضيء حياتنا<br>
+    <span style="color:var(--gold);">وبارك اللهُ في أيّامنا القادمة 🌙</span>
+  </div>
+  <button class="nbtn" id="s2btn" onclick="goTo(3)">استمري ←</button>
+</div>
+
+<!-- ══ S3 — السفر الكوني ══ -->
+<div class="step" id="s3">
+  <div style="position:relative;z-index:5;">
+    <div class="ttitle" id="s3t">🌌   لا ادري لماذا اشبهك ب الكونُ </div>
+    <div class="tsub" id="s3s" style="margin-top:14px;">
+      تأمّلي هذا الخلق العظيم<br>
+      وفي كلّ نجمة ترينها آية من آيات الله<br>
+      <span style="color:var(--rose3);font-style:italic;">﴿إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ... لَآيَاتٍ﴾</span>
+    </div>
+    <button class="nbtn" id="s3btn" onclick="goTo(4)">إلى الأمام ←</button>
+  </div>
+</div>
+
+<!-- ══ S4 — النجوم تكتب اسمها ══ -->
+<div class="step" id="s4">
+  <canvas id="s4-canvas"></canvas>
+  <div class="s4-poem" id="s4p">
+    في لوحةِ الكون الواسع... كتبَ اسمكِ بالنور يا سلمى 🌟
+  </div>
+  <button class="nbtn" id="s4btn" style="position:relative;z-index:5;" onclick="goTo(5)">استمري ←</button>
+</div>
+
+<!-- ══ S5 — القصيدة الراقية ══ -->
+<div class="step" id="s5">
+  <div class="poem-card" id="pcard">
+    <span class="poem-line" id="pl1">يا سلمى...</span>
+    <span class="poem-line hl" id="pl2">مِن أجملِ ما أنعمَ الله به عليّ</span>
+    <span class="poem-line" id="pl3">أن جمعَ قلبينا على خيرٍ وسلام</span>
+    <span class="poem-line dua" id="pl4">اللّهمّ بارك لنا وأتمم أمرنا على أحسن حال</span>
+    <span class="poem-line" id="pl5">وأسألُ اللهَ أن يكونَ كلّ عيدٍ قادم</span>
+    <span class="poem-line hl" id="pl6">✦ أوفرَ بركةً وأجملَ مما مضى ✦</span>
+  </div>
+  <button class="nbtn" id="s5btn" onclick="goTo(6)">استمري ←</button>
+</div>
+
+<!-- ══ S6 — مطر الورد ══ -->
+<div class="step" id="s6">
+  <div style="font-family:'Amiri',serif;font-size:clamp(26px,5vw,52px);color:var(--pink);
+    text-shadow:0 0 30px #ff8fab66;opacity:0;line-height:1.9;" id="s6m">
+    🌹 «وَأَسْبَغَ عَلَيْكُمْ نِعَمَهُ ظَاهِرَةً وَبَاطِنَةً» 🌹
+  </div>
+  <div class="tsub" id="s6s" style="margin-top:14px;font-size:clamp(16px,2.5vw,24px);color:rgba(255,214,224,.6);">
+    كلّ وردة هي شكرٌ لله على نعمة وجودكِ
+  </div>
+  <button class="nbtn" id="s6btn" onclick="goTo(7)">استمري ←</button>
+</div>
+
+<!-- ══ S7 — القلب ══ -->
+<div class="step" id="s7">
+  <div id="hs" style="margin-bottom:22px;">
+    <div class="heart-3d"><div class="heart-core"></div></div>
+  </div>
+  <div style="font-family:'Amiri',serif;font-size:clamp(50px,11vw,100px);font-weight:700;
+    background:linear-gradient(135deg,#fff,var(--pink),var(--rose3));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    filter:drop-shadow(0 0 25px #ff8fab99);opacity:0;" id="s7n">سلمى</div>
+  <div class="tdua" id="s7s" style="margin-top:12px;">
+    اللّهمّ اجعل بينهما مودّةً ورحمةً<br>
+    وارزقهما حياةً طيّبةً في طاعتك 💗
+  </div>
+  <button class="nbtn" id="s7btn" onclick="goTo(8)">استمري ←</button>
+</div>
+
+<!-- ══ S8 — الوعود بإذن الله ══ -->
+<div class="step" id="s8">
+  <div class="vow-list" id="vowList">
+    <div class="vow-item" id="v1">
+      <span class="vow-icon">🌙</span>
+      <span class="vow-dua">اللّهمّ اجعل عرسنا قبل العيد الاضحئ  وتكوني معي  </span>
+    </div>
+    <div class="vow-item" id="v2">
+      <span class="vow-icon">🤲</span>
+      <span class="vow-dua">اللّهمّ أتمم أمرنا على خير وبارك في طريقنا معاً</span>
+    </div>
+    <div class="vow-item" id="v3">
+      <span class="vow-icon">🌹</span>
+      <span class="vow-text">أعدكِ بإذن الله أن أكون أهلاً للثقة التي منحتِني إيّاها</span>
+    </div>
+    <div class="vow-item" id="v4">
+      <span class="vow-icon">💫</span>
+      <span class="vow-text">وأسأل الله أن يرزقنا البيتَ الذي تسكنه الرحمة والبركة</span>
+    </div>
+  </div>
+  <button class="nbtn" id="s8btn" onclick="goTo(9)">استمري ←</button>
+</div>
+
+<!-- ══ S9 — مجرّة الذكريات ══ -->
+<div class="step" id="s9">
+  <canvas id="s9-canvas"></canvas>
+  <div style="position:relative;z-index:5;font-family:'Amiri',serif;
+    font-size:clamp(26px,5.5vw,56px);
+    background:linear-gradient(140deg,var(--cream),var(--pink),var(--rose3));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    filter:drop-shadow(0 0 20px #ff8fab88);opacity:0;line-height:1.8;" id="s9m">
+    ما أجمل ما ادّخره الله لنا... 🌌
+  </div>
+  <div class="tdua" id="s9s" style="position:relative;z-index:5;margin-top:14px;">
+    رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ
+  </div>
+  <button class="nbtn" id="s9btn" style="position:relative;z-index:5;" onclick="goTo(10)">استمري ←</button>
+</div>
+
+<!-- ══ S10 — العدّ التنازلي ══ -->
+<div class="step" id="s10">
+  <div class="countdown-ring">
+    <svg class="ring-svg" viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="#c9184a"/>
+          <stop offset="50%"  stop-color="#ff8fab"/>
+          <stop offset="100%" stop-color="#ffe082"/>
+        </linearGradient>
+      </defs>
+      <circle class="ring-bg" cx="100" cy="100" r="90"/>
+      <circle class="ring-progress" id="ringProg" cx="100" cy="100" r="90"/>
+    </svg>
+    <div class="ring-inner">
+      <div class="ring-emoji">🎁</div>
+      <div class="ring-text">الهديّة قريبة</div>
+    </div>
+  </div>
+  <div class="ttitle" id="s10t">لحظةٌ واحدة فقط...</div>
+  <div class="tdua" id="s10s" style="margin-top:10px;font-size:clamp(15px,2.2vw,22px);">
+    اللّهمّ اجعل ما تقدم عليه خيراً وبركة
+  </div>
+  <button class="nbtn" id="s10btn" onclick="goTo(11)">اقتربي ←</button>
+</div>
+
+<!-- ══ S11 — الاقتراب ══ -->
+<div class="step" id="s11">
+  <div class="ttitle" id="s11t" style="margin-bottom:12px;">🎀 صندوقٌ أُعِدَّ لكِ بكلّ محبّة</div>
+  <div class="tsub" id="s11s" style="margin-bottom:24px;">
+    رحلةٌ طويلة عبر النجوم... وهذا كان هدفها
+  </div>
+  <div class="approach-scene" id="approachScene">
+    <div style="font-size:clamp(100px,20vw,180px);
+      filter:drop-shadow(0 0 50px var(--rose)cc) drop-shadow(0 0 100px var(--rose)66);">🎁</div>
+  </div>
+  <button class="nbtn" id="s11btn" onclick="goTo(12)">افتحيه ←</button>
+</div>
+
+<!-- ══ S12 — الصندوق ══ -->
+<div class="step" id="s12">
+  <div class="s12-invite" id="s12inv">🎀 انقري على الصندوق يا سلمى 🎀</div>
+  <div class="gift-scene" id="gScene" onclick="openGift()">
+    <div class="gs" style="width:9px;height:9px;top:-18px;left:20%;--gd:1.8s;--gdl:0s;"></div>
+    <div class="gs" style="width:7px;height:7px;top:-10px;right:16%;--gd:1.4s;--gdl:.4s;"></div>
+    <div class="gs" style="width:8px;height:8px;top:22%;right:-14px;--gd:2s;--gdl:.2s;"></div>
+    <div class="gs" style="width:6px;height:6px;bottom:25%;left:-12px;--gd:1.6s;--gdl:.7s;"></div>
+    <div class="gs" style="width:9px;height:9px;bottom:-10px;left:36%;--gd:2.2s;--gdl:.1s;"></div>
+    <div class="gs" style="width:7px;height:7px;top:12%;left:-10px;--gd:1.5s;--gdl:.9s;"></div>
+    <div class="gs" style="width:5px;height:5px;top:45%;right:-8px;--gd:2.4s;--gdl:.5s;"></div>
+    <div class="gs" style="width:8px;height:8px;bottom:40%;left:10%;--gd:1.7s;--gdl:1.1s;"></div>
+    <div class="gift-aura" id="gAura"></div>
+    <div class="gift-lid-wrap" id="gLid">
+      <div class="gift-bow">🎀</div>
+      <div class="gift-lid">
+        <div class="lid-rh"></div>
+        <div class="lid-rv"></div>
+      </div>
+    </div>
+    <div class="gift-body">
+      <div class="gift-front">
+        <div class="box-rh"></div>
+        <div class="box-rv"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FINAL ══ -->
+<div id="final">
+  <div class="final-name">سلمى</div>
+  <div class="final-eid">كلّ عام وأنتِ بخير 🌙</div>
+  <div class="final-dua">
+    اللّهمّ بارك لها في عيدها ويُسرها<br>
+    وارزقها وأهلَها الكريمين كلّ خير وسلامة 🤲
+  </div>
+  <div class="final-msg">
+    بكلّ احترام ومحبّة...<br>
+    <span style="color:rgba(255,214,224,.5);font-size:.85em;">خطيبكِ الذي يدعو الله لكِ في كلّ سجدة ✨</span>
+  </div>
+  <div class="final-roses">🌹 🌸 💐 🌺 🌷</div>
+</div>
+
+<!-- Audio (plays when gift opens) -->
+<audio id="giftAudio" preload="auto" src="./عيدك_يا_سلمى_Eid_Elsh_Ya_Salma_.mp3"></audio>
+<!-- Background audio (starts from beginning, blocks navigation until it starts) -->
+<audio id="bgAudio" preload="auto" src="./m2.mp3" loop></audio>
+
+<!-- ════ SCRIPTS ════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+/* CURSOR */
+const cur=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+document.addEventListener('mousedown',()=>cur.classList.add('clicking'));
+document.addEventListener('mouseup',()=>cur.classList.remove('clicking'));
+document.addEventListener('touchmove',e=>{cur.style.left=e.touches[0].clientX+'px';cur.style.top=e.touches[0].clientY+'px';},{passive:true});
+
+/* THREE.JS */
+const cv3=document.getElementById('bg');
+const ren=new THREE.WebGLRenderer({canvas:cv3,antialias:true,alpha:true});
+ren.setSize(innerWidth,innerHeight); ren.setPixelRatio(Math.min(devicePixelRatio,2));
+const sc3=new THREE.Scene();
+const cm3=new THREE.PerspectiveCamera(65,innerWidth/innerHeight,.1,4000);
+cm3.position.z=5;
+function mkStarTex(){
+  const s=64, c=document.createElement('canvas');
+  c.width=c.height=s;
+  const ctx=c.getContext('2d');
+  const g=ctx.createRadialGradient(s/2,s/2,0,s/2,s/2,s/2);
+  g.addColorStop(0,'rgba(255,255,255,1)');
+  g.addColorStop(.22,'rgba(255,255,255,.95)');
+  g.addColorStop(.5,'rgba(255,255,255,.35)');
+  g.addColorStop(1,'rgba(255,255,255,0)');
+  ctx.fillStyle=g;
+  ctx.beginPath(); ctx.arc(s/2,s/2,s/2,0,Math.PI*2); ctx.fill();
+  const t=new THREE.CanvasTexture(c);
+  t.minFilter=THREE.LinearFilter;
+  t.magFilter=THREE.LinearFilter;
+  t.generateMipmaps=false;
+  return t;
+}
+const starTex=mkStarTex();
+function mkS(n,sp,sz,col,op=.9){
+  const g=new THREE.BufferGeometry();
+  const p=new Float32Array(n*3);
+  for(let i=0;i<n*3;i++) p[i]=(Math.random()-.5)*sp;
+  g.setAttribute('position',new THREE.BufferAttribute(p,3));
+  return new THREE.Points(g,new THREE.PointsMaterial({
+    color:col,size:sz,transparent:true,opacity:op,sizeAttenuation:true,
+    map:starTex,alphaTest:.15,depthWrite:false,blending:THREE.AdditiveBlending
+  }));
+}
+const sW=mkS(6000,1200,.25,0xffffff,.7), sP=mkS(1500,600,.4,0xffd6e0,.85),
+      sR=mkS(800,400,.6,0xff8fab,.9),    sG=mkS(400,280,.85,0xffe082,.9),
+      sB=mkS(200,200,1.1,0xff4d6d,.85);
+sc3.add(sW,sP,sR,sG,sB);
+let spd=.0003, mx3=0, my3=0, t3=0;
+document.addEventListener('mousemove',e=>{mx3=(e.clientX/innerWidth-.5)*2;my3=(e.clientY/innerHeight-.5)*2;});
+(function a(){requestAnimationFrame(a);t3+=spd;
+  sW.rotation.y=t3*.3+mx3*.05; sW.rotation.x=t3*.1+my3*.02;
+  sP.rotation.y=-t3*.5+mx3*.07; sP.rotation.x=t3*.15+my3*.03;
+  sR.rotation.y=t3*.8+mx3*.04; sR.rotation.z=t3*.05;
+  sG.rotation.y=-t3*1.2; sG.rotation.x=t3*.2;
+  sB.rotation.y=t3*2; sB.rotation.z=-t3*.1;
+  cm3.position.x+=(mx3*.4-cm3.position.x)*.04;
+  cm3.position.y+=(-my3*.3-cm3.position.y)*.04;
+  cm3.lookAt(0,0,0); ren.render(sc3,cm3);
+})();
+window.addEventListener('resize',()=>{cm3.aspect=innerWidth/innerHeight;cm3.updateProjectionMatrix();ren.setSize(innerWidth,innerHeight);});
+
+/* DOTS */
+const dotsEl=document.getElementById('dots');
+for(let i=1;i<=12;i++){const d=document.createElement('div');d.className='dot';d.id='dt'+i;dotsEl.appendChild(d);}
+function updateDots(n){
+  for(let i=1;i<=12;i++){const d=document.getElementById('dt'+i);d.className='dot';if(i<n)d.classList.add('done');if(i===n)d.classList.add('now');}
+  document.getElementById('pbar').style.width=(n/12*100)+'%';
+  document.getElementById('steps-label').textContent=n+' / ١٢';
+}
+
+/* STEP TRANSITION */
+let curr=1; let ptmr=null;
+function goTo(n){
+  const prev=document.getElementById('s'+curr), next=document.getElementById('s'+n);
+  const fl=document.getElementById('flash');
+  gsap.to(fl,{opacity:1,duration:.15,onComplete:()=>gsap.to(fl,{opacity:0,duration:.4})});
+  gsap.to(prev,{opacity:0,scale:.97,duration:.6,ease:'power2.in',onComplete:()=>prev.classList.remove('active')});
+  setTimeout(()=>{
+    next.classList.add('active');
+    gsap.fromTo(next,{opacity:0,scale:1.04},{opacity:1,scale:1,duration:.8,ease:'power2.out'});
+    animStep(n);
+  },400);
+  curr=n; updateDots(n);
+  if(n===10){
+    const a=document.getElementById('bgAudio');
+    if(a){ try{ a.pause(); }catch(e){} }
+  }
+  const speeds=[0,.0003,.0004,.009,.0003,.0005,.0004,.0006,.0003,.0004,.0002,.0003,.0002];
+  spd=speeds[n]||.0003;
+  if(n!==6&&ptmr){clearInterval(ptmr);ptmr=null;}
+  if(n>=10){dotsEl.style.opacity='.3';document.getElementById('steps-label').style.opacity='.3';}
+  if(n===12){dotsEl.style.opacity='0';document.getElementById('steps-label').style.opacity='0';}
+}
+
+/* START JOURNEY — wait for bg audio */
+const bgAudioEl=document.getElementById('bgAudio');
+let bgStarted=false;
+async function startJourney(){
+  const btn=document.getElementById('s1btn');
+  if(bgStarted){ goTo(2); return; }
+  if(btn){
+    btn.disabled=true;
+    btn.dataset.oldText=btn.textContent;
+    btn.textContent='جاري التحميل...';
+    btn.style.opacity='1';
+  }
+
+  if(!bgAudioEl){
+    bgStarted=true;
+    if(btn){ btn.disabled=false; btn.textContent=btn.dataset.oldText||'ابدئي الرحلة ✨'; }
+    goTo(2);
+    return;
+  }
+
+  bgAudioEl.volume=0.85;
+
+  const waitCanPlay=new Promise(resolve=>{
+    if(bgAudioEl.readyState>=3) return resolve();
+    const onReady=()=>{cleanup(); resolve();};
+    const onErr=()=>{cleanup(); resolve();};
+    const cleanup=()=>{
+      bgAudioEl.removeEventListener('canplaythrough',onReady);
+      bgAudioEl.removeEventListener('canplay',onReady);
+      bgAudioEl.removeEventListener('loadeddata',onReady);
+      bgAudioEl.removeEventListener('error',onErr);
+    };
+    bgAudioEl.addEventListener('canplaythrough',onReady,{once:true});
+    bgAudioEl.addEventListener('canplay',onReady,{once:true});
+    bgAudioEl.addEventListener('loadeddata',onReady,{once:true});
+    bgAudioEl.addEventListener('error',onErr,{once:true});
+    try{ bgAudioEl.load(); }catch(e){ resolve(); }
+  });
+
+  await waitCanPlay;
+
+  try{
+    const p=bgAudioEl.play();
+    if(p && p.catch) await p.catch(()=>{});
+  }catch(e){}
+
+  bgStarted=true;
+  if(btn){ btn.disabled=false; btn.textContent=btn.dataset.oldText||'ابدئي الرحلة ✨'; }
+  goTo(2);
+}
+
+/* STEP ANIMATIONS */
+function animStep(n){
+  const g=gsap, e='power3.out', e2='back.out(1.4)';
+  if(n===1){g.set(['#s1l1','#s1main','#s1sub','#s1btn'],{opacity:0,y:30});g.to(['#s1l1','#s1main','#s1sub','#s1btn'],{opacity:1,y:0,stagger:.3,duration:.9,ease:e,delay:.2});}
+  if(n===2){g.fromTo('#s2t',{opacity:0,y:25},{opacity:1,y:0,duration:1,ease:e,delay:.3});g.fromTo('#s2v',{opacity:0,y:25},{opacity:1,y:0,duration:1,ease:e,delay:.7});g.fromTo('#s2btn',{opacity:0,y:25},{opacity:1,y:0,duration:1,ease:e,delay:1.4});}
+  if(n===3){spd=.012;setTimeout(()=>spd=.0008,2500);g.fromTo('#s3t',{opacity:0,scale:.7},{opacity:1,scale:1,duration:1,ease:e2,delay:.4});g.fromTo('#s3s',{opacity:0,y:20},{opacity:1,y:0,duration:.9,ease:e,delay:1});g.fromTo('#s3btn',{opacity:0,y:20},{opacity:1,y:0,duration:.9,ease:e,delay:1.8});}
+  if(n===4){initS4();g.fromTo('#s4p',{opacity:0,y:20},{opacity:1,y:0,duration:1,ease:e,delay:1.2});g.fromTo('#s4btn',{opacity:0,y:20},{opacity:1,y:0,duration:1,ease:e,delay:2});}
+  if(n===5){g.fromTo('#pcard',{opacity:0,y:30,scale:.95},{opacity:1,y:0,scale:1,duration:1,ease:e2,delay:.2});['#pl1','#pl2','#pl3','#pl4','#pl5','#pl6'].forEach((id,i)=>g.fromTo(id,{opacity:0,x:20},{opacity:1,x:0,duration:.8,ease:e,delay:.6+i*.38}));g.fromTo('#s5btn',{opacity:0},{opacity:1,duration:.8,delay:3.8});}
+  if(n===6){g.fromTo('#s6m',{opacity:0,scale:.9},{opacity:1,scale:1,duration:1,ease:e2,delay:.3});g.fromTo('#s6s',{opacity:0,y:20},{opacity:1,y:0,duration:.9,ease:e,delay:.9});g.fromTo('#s6btn',{opacity:0},{opacity:1,duration:.8,delay:1.6});startPetals();}
+  if(n===7){g.fromTo('#hs',{opacity:0,scale:.5},{opacity:1,scale:1,duration:1.2,ease:e2,delay:.3});g.fromTo('#s7n',{opacity:0,y:20},{opacity:1,y:0,duration:1,ease:e,delay:1.1});g.fromTo('#s7s',{opacity:0,y:15},{opacity:1,y:0,duration:.9,ease:e,delay:1.7});g.fromTo('#s7btn',{opacity:0},{opacity:1,duration:.8,delay:2.4});}
+  if(n===8){g.fromTo('#s8btn',{opacity:0},{opacity:1,duration:.8,delay:2.6});['#v1','#v2','#v3','#v4'].forEach((id,i)=>setTimeout(()=>document.querySelector(id).classList.add('visible'),400+i*350));}
+  if(n===9){initS9();g.fromTo('#s9m',{opacity:0,y:25},{opacity:1,y:0,duration:1.1,ease:e,delay:.4});g.fromTo('#s9s',{opacity:0,y:20},{opacity:1,y:0,duration:.9,ease:e,delay:1.1});g.fromTo('#s9btn',{opacity:0},{opacity:1,duration:.8,delay:1.8});}
+  if(n===10){g.fromTo('#s10t',{opacity:0,y:20},{opacity:1,y:0,duration:1,ease:e,delay:.3});g.fromTo('#s10s',{opacity:0,y:15},{opacity:1,y:0,duration:.9,ease:e,delay:.8});g.fromTo('#s10btn',{opacity:0},{opacity:1,duration:.8,delay:4.5});setTimeout(()=>document.getElementById('ringProg').style.strokeDashoffset='0',600);}
+  if(n===11){g.fromTo('#s11t',{opacity:0,y:20},{opacity:1,y:0,duration:1,ease:e,delay:.3});g.fromTo('#s11s',{opacity:0,y:15},{opacity:1,y:0,duration:.9,ease:e,delay:.8});g.fromTo('#s11btn',{opacity:0},{opacity:1,duration:.8,delay:3.4});}
+  if(n===12){g.fromTo('#s12inv',{opacity:0,y:20},{opacity:1,y:0,duration:1,ease:e,delay:.4});g.fromTo('#gScene',{opacity:0,scale:.7},{opacity:1,scale:1,duration:1.2,ease:e2,delay:1});}
+}
+
+/* S4 CANVAS — name in stars */
+function initS4(){
+  const cv=document.getElementById('s4-canvas');
+  cv.width=cv.offsetWidth||innerWidth; cv.height=cv.offsetHeight||innerHeight;
+  const ctx=cv.getContext('2d');
+  ctx.font=`bold ${Math.min(cv.width*.28,180)}px 'Amiri',serif`;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillStyle='white'; ctx.fillText('سلمى',cv.width/2,cv.height*.38);
+  const pd=ctx.getImageData(0,0,cv.width,cv.height).data;
+  ctx.clearRect(0,0,cv.width,cv.height);
+  const pts=[]; const stp=5;
+  for(let y=0;y<cv.height;y+=stp) for(let x=0;x<cv.width;x+=stp)
+    if(pd[(y*cv.width+x)*4+3]>100) pts.push({x,y});
+  const chosen=[]; const inc=Math.floor(pts.length/Math.min(pts.length,220));
+  for(let i=0;i<pts.length;i+=inc) chosen.push(pts[i]);
+  const stars=chosen.map(p=>({x:cv.width/2+(Math.random()-.5)*cv.width*.8,y:cv.height*.38+(Math.random()-.5)*cv.height*.6,tx:p.x,ty:p.y,size:Math.random()*2.5+1,alpha:0,prog:Math.random()*.6}));
+  let fr=0;
+  (function d(){ctx.clearRect(0,0,cv.width,cv.height);fr++;
+    for(const s of stars){
+      s.prog=Math.min(s.prog+.008,1); s.alpha=Math.min(s.alpha+.04,1);
+      const p=s.prog<.5?2*s.prog*s.prog:1-Math.pow(-2*s.prog+2,2)/2;
+      const x2=s.x+(s.tx-s.x)*p, y2=s.y+(s.ty-s.y)*p;
+      const grd=ctx.createRadialGradient(x2,y2,0,x2,y2,s.size*4);
+      grd.addColorStop(0,`rgba(255,214,224,${s.alpha})`);
+      grd.addColorStop(.5,`rgba(255,141,171,${s.alpha*.5})`);
+      grd.addColorStop(1,'rgba(201,24,74,0)');
+      ctx.fillStyle=grd; ctx.beginPath(); ctx.arc(x2,y2,s.size*4,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle=`rgba(255,255,255,${s.alpha*.9})`; ctx.beginPath(); ctx.arc(x2,y2,s.size*.8,0,Math.PI*2); ctx.fill();
+    }
+    if(fr<400) requestAnimationFrame(d);
+  })();
+}
+
+/* S9 GALAXY */
+function initS9(){
+  const cv=document.getElementById('s9-canvas');
+  cv.width=cv.offsetWidth||innerWidth; cv.height=cv.offsetHeight||innerHeight;
+  const ctx=cv.getContext('2d');
+  const pts=[];
+  for(let i=0;i<400;i++){const ang=Math.random()*Math.PI*2,r=Math.random()*Math.min(cv.width,cv.height)*.4,sp=r*.006;
+    pts.push({ang:ang+sp,rd:r,r:Math.random()*2.5+.5,a:Math.random(),sp:Math.random()*.015+.003,hue:Math.random()*60+320});}
+  let fr=0;(function d(){fr++;ctx.clearRect(0,0,cv.width,cv.height);
+    for(const p of pts){p.ang+=p.sp;p.a=.4+.6*Math.abs(Math.sin(fr*.02+p.ang));
+      const x=cv.width/2+Math.cos(p.ang)*p.rd,y=cv.height/2+Math.sin(p.ang)*p.rd*.5;
+      const g=ctx.createRadialGradient(x,y,0,x,y,p.r*5);
+      g.addColorStop(0,`hsla(${p.hue},100%,80%,${p.a})`);g.addColorStop(1,`hsla(${p.hue},100%,60%,0)`);
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,p.r*5,0,Math.PI*2);ctx.fill();}
+    if(fr<600) requestAnimationFrame(d);})();
+}
+
+/* PETALS */
+const PI=['🌸','🌺','🌷','🌹','🏵️','🌼','💐'];
+function spawnPetal(){
+  const p=document.createElement('div'); p.className='falling-petal';
+  p.textContent=PI[Math.floor(Math.random()*PI.length)];
+  const dur=Math.random()*7+8;
+  p.style.cssText=`left:${Math.random()*110-5}vw;top:-40px;font-size:${Math.random()*16+14}px;animation-duration:${dur}s;--pr:${(Math.random()-.5)*360}deg;--px:${(Math.random()-.5)*80}px;`;
+  document.body.appendChild(p); setTimeout(()=>p.remove(),(dur+1)*1000);
+}
+function startPetals(){if(ptmr)clearInterval(ptmr);for(let i=0;i<8;i++)setTimeout(spawnPetal,i*120);ptmr=setInterval(spawnPetal,600);}
+
+/* OPEN GIFT */
+let gOpened=false;
+const giftAudioEl=document.getElementById('giftAudio');
+let gAudioPlayed=false;
+function playGiftAudioOnce(){
+  if(gAudioPlayed) return;
+  if(!giftAudioEl) return;
+  gAudioPlayed=true;
+  try{
+    giftAudioEl.currentTime=0;
+    const p=giftAudioEl.play();
+    // Some browsers return a rejected Promise if autoplay is blocked.
+    if(p && p.catch) p.catch(()=>{});
+  }catch(e){}
+}
+function openGift(){
+  if(gOpened)return; gOpened=true;
+  playGiftAudioOnce();
+  document.getElementById('gScene').classList.add('opening');
+  const fl=document.getElementById('flash');
+  fl.style.background='radial-gradient(ellipse at center,rgba(255,255,255,.6),transparent 60%)';
+  fl.style.opacity='1'; setTimeout(()=>fl.style.opacity='0',400);
+  setTimeout(explode,600); setTimeout(startPetals,800); setTimeout(showFinal,2200);
+}
+function explode(){
+  const cx=innerWidth/2,cy=innerHeight*.6;
+  const items=['🌹','🌸','🌺','🌷','💐','🌹','🌸','✨','💗','💫','🌺','🌷','🌹','⭐','🌸'];
+  for(let i=0;i<80;i++) setTimeout(()=>{
+    const r=document.createElement('div'); r.className='rp';
+    r.textContent=items[Math.floor(Math.random()*items.length)];
+    const ang=Math.random()*Math.PI*2, sp=Math.random()*420+100, sz=Math.random()*20+16;
+    r.style.cssText=`left:${cx}px;top:${cy}px;--rps:${sz}px;--mx:${Math.cos(ang)*sp*.3}px;--my:${Math.sin(ang)*sp*.3-160}px;--fx:${Math.cos(ang)*sp}px;--fy:${Math.sin(ang)*sp}px;animation-duration:${Math.random()*1.8+1.8}s;`;
+    document.body.appendChild(r); setTimeout(()=>r.remove(),4500);
+  },i*28);
+}
+function showFinal(){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  ['dots','steps-label','pbar-wrap'].forEach(id=>document.getElementById(id).style.display='none');
+  document.getElementById('final').classList.add('show');
+  spd=.0001; setTimeout(startPetals,1000);
+}
+
+/* INIT */
+updateDots(1);
+gsap.set(['#s1l1','#s1main','#s1sub','#s1btn'],{opacity:0,y:30});
+setTimeout(()=>animStep(1),300);
+</script>
+</body>
+</html>
